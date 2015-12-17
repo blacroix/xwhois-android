@@ -1,7 +1,8 @@
-package fr.xebia.xwhois
+package fr.xebia.xwhois.game
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import fr.xebia.xwhois.R
 
 class GameActivity : AppCompatActivity() {
 
