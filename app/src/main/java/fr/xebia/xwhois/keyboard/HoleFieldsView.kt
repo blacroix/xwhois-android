@@ -6,22 +6,23 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
 import fr.xebia.xwhois.R
-import kotlinx.android.synthetic.main.view_keyboard.view.*
+import kotlinx.android.synthetic.main.view_hole_fields.view.*
 
 class HoleFieldsView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : LinearLayout(context, attrs, defStyleAttr) {
 
-    lateinit var name: String
-
     lateinit var group: LinearLayout
 
-    fun bind(name: String) {
-        this.name = name
+    override fun onFinishInflate() {
+        super.onFinishInflate()
 
         group = LinearLayout(context)
         group.orientation = HORIZONTAL
         group.layoutParams = LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
-        val holeFieldsLayout = findViewById(R.id.holeFieldsLayout) as LinearLayout
         holeFieldsLayout.addView(group)
+    }
+
+    fun bind(name: String) {
+        group.removeAllViews()
         for (i in 0..name.length - 1) {
             var textView = TextView(context)
             val textLayoutParams = LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)

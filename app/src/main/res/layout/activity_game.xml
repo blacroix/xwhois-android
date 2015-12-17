@@ -8,14 +8,29 @@
     android:orientation="vertical"
     tools:context=".game.GameActivity">
 
-    <ImageView
-        android:id="@+id/personImage"
-        android:layout_width="wrap_content"
+    <FrameLayout
+        android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_gravity="center"
-        android:layout_weight="1"
-        android:contentDescription="@string/content_description_person_image"
-        android:src="@drawable/llegardeur"/>
+        android:layout_weight="1">
+
+        <ImageView
+            android:id="@+id/personImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/content_description_person_image"
+            android:scaleType="fitCenter"
+            android:src="@drawable/llegardeur"/>
+
+        <TextView
+            android:id="@+id/counterText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right"
+            android:layout_marginRight="10dp"
+            android:textSize="32sp"
+            tools:text="4"/>
+    </FrameLayout>
 
     <include layout="@layout/view_hole_fields"/>
 

@@ -2,4 +2,6 @@
     <string name="app_name">xwhois</string>
     <string name="action_settings">Settings</string>
     <string name="content_description_person_image">Person\'s image</string>
+    <string name="message_win">Well done!</string>
+    <string name="message_loose">Try again</string>
 </resources>

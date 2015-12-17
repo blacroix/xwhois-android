@@ -38,7 +38,7 @@ dependencies {
     compile(
             'com.android.support:appcompat-v7:23.1.1',
             'com.android.support:design:23.1.1',
-            "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+            "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version",
     )
 }
 
