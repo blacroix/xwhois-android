@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<fr.xebia.xwhois.keyboard.KeyboardView
+    android:id="@+id/keyboardLayout"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:layout_column="10"
     android:orientation="vertical"
     android:padding="10dp">
@@ -38,7 +39,7 @@
             android:text="t"/>
 
         <Button
-            android:id="@+id/y"
+            android:id="@+id/yKey"
             style="@style/keyboardKey"
             android:text="y"/>
 
@@ -127,12 +128,12 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/z"
+            android:id="@+id/zKey"
             style="@style/keyboardKey"
             android:text="z"/>
 
         <Button
-            android:id="@+id/x"
+            android:id="@+id/xKey"
             style="@style/keyboardKey"
             android:text="x"/>
 
@@ -158,4 +159,4 @@
 
     </LinearLayout>
 
-</LinearLayout>
+</fr.xebia.xwhois.keyboard.KeyboardView>
