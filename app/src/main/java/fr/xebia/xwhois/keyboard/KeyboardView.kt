@@ -13,35 +13,35 @@ class KeyboardView @JvmOverloads constructor(context: Context, attrs: AttributeS
     override fun onFinishInflate() {
         super.onFinishInflate()
 
-        a.setOnClickListener { listener.click('a') }
-        b.setOnClickListener { listener.click('b') }
-        c.setOnClickListener { listener.click('c') }
-        d.setOnClickListener { listener.click('d') }
-        e.setOnClickListener { listener.click('e') }
-        f.setOnClickListener { listener.click('f') }
-        g.setOnClickListener { listener.click('g') }
-        h.setOnClickListener { listener.click('h') }
-        i.setOnClickListener { listener.click('i') }
-        j.setOnClickListener { listener.click('j') }
-        k.setOnClickListener { listener.click('k') }
-        l.setOnClickListener { listener.click('l') }
-        m.setOnClickListener { listener.click('m') }
-        n.setOnClickListener { listener.click('n') }
-        o.setOnClickListener { listener.click('o') }
-        p.setOnClickListener { listener.click('p') }
-        q.setOnClickListener { listener.click('q') }
-        r.setOnClickListener { listener.click('r') }
-        s.setOnClickListener { listener.click('s') }
-        t.setOnClickListener { listener.click('t') }
-        u.setOnClickListener { listener.click('u') }
-        v.setOnClickListener { listener.click('v') }
-        w.setOnClickListener { listener.click('w') }
-        xKey.setOnClickListener { listener.click('x') }
-        yKey.setOnClickListener { listener.click('y') }
-        zKey.setOnClickListener { listener.click('z') }
+        a.setOnClickListener { listener.keyboardCharSelected('a') }
+        b.setOnClickListener { listener.keyboardCharSelected('b') }
+        c.setOnClickListener { listener.keyboardCharSelected('c') }
+        d.setOnClickListener { listener.keyboardCharSelected('d') }
+        e.setOnClickListener { listener.keyboardCharSelected('e') }
+        f.setOnClickListener { listener.keyboardCharSelected('f') }
+        g.setOnClickListener { listener.keyboardCharSelected('g') }
+        h.setOnClickListener { listener.keyboardCharSelected('h') }
+        i.setOnClickListener { listener.keyboardCharSelected('i') }
+        j.setOnClickListener { listener.keyboardCharSelected('j') }
+        k.setOnClickListener { listener.keyboardCharSelected('k') }
+        l.setOnClickListener { listener.keyboardCharSelected('l') }
+        m.setOnClickListener { listener.keyboardCharSelected('m') }
+        n.setOnClickListener { listener.keyboardCharSelected('n') }
+        o.setOnClickListener { listener.keyboardCharSelected('o') }
+        p.setOnClickListener { listener.keyboardCharSelected('p') }
+        q.setOnClickListener { listener.keyboardCharSelected('q') }
+        r.setOnClickListener { listener.keyboardCharSelected('r') }
+        s.setOnClickListener { listener.keyboardCharSelected('s') }
+        t.setOnClickListener { listener.keyboardCharSelected('t') }
+        u.setOnClickListener { listener.keyboardCharSelected('u') }
+        v.setOnClickListener { listener.keyboardCharSelected('v') }
+        w.setOnClickListener { listener.keyboardCharSelected('w') }
+        xKey.setOnClickListener { listener.keyboardCharSelected('x') }
+        yKey.setOnClickListener { listener.keyboardCharSelected('y') }
+        zKey.setOnClickListener { listener.keyboardCharSelected('z') }
     }
 
     interface OnKeyboardListener {
-        fun click(c: Char)
+        fun keyboardCharSelected(c: Char)
     }
 }

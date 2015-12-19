@@ -5,7 +5,6 @@ import android.util.AttributeSet
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
-import fr.xebia.xwhois.R
 import kotlinx.android.synthetic.main.view_hole_fields.view.*
 
 class HoleFieldsView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : LinearLayout(context, attrs, defStyleAttr) {

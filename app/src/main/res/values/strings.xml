@@ -4,4 +4,5 @@
     <string name="content_description_person_image">Person\'s image</string>
     <string name="message_win">Well done!</string>
     <string name="message_loose">Try again</string>
+    <string name="message_end">No more Xebians for now</string>
 </resources>
