@@ -6,10 +6,13 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
 import kotlinx.android.synthetic.main.view_hole_fields.view.*
+import java.util.*
 
 class HoleFieldsView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : LinearLayout(context, attrs, defStyleAttr) {
 
     lateinit var group: LinearLayout
+
+    val random: Random = Random()
 
     override fun onFinishInflate() {
         super.onFinishInflate()
@@ -38,6 +41,9 @@ class HoleFieldsView @JvmOverloads constructor(context: Context, attrs: Attribut
             }
             group.addView(textView)
         }
+
+        show(name[random.nextInt(name.length)])
+        show(name[random.nextInt(name.length)])
     }
 
     fun show(c: Char): Boolean {

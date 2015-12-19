@@ -3,14 +3,12 @@ package fr.xebia.xwhois.person
 import android.app.IntentService
 import android.content.Intent
 import com.bumptech.glide.Glide
-import com.bumptech.glide.request.FutureTarget
 import fr.xebia.xwhois.BuildConfig
 import fr.xebia.xwhois.network.XwhoisService
 import io.realm.Realm
 import retrofit.GsonConverterFactory
 import retrofit.Retrofit
 import timber.log.Timber
-import java.io.File
 import java.io.IOException
 
 class PersonService : IntentService(PersonService::class.java.simpleName) {
