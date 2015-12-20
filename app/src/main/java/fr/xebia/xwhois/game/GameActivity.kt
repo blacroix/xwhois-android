@@ -1,5 +1,6 @@
 package fr.xebia.xwhois.game
 
+import android.app.ProgressDialog
 import android.content.*
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -21,6 +22,8 @@ class GameActivity : AppCompatActivity(), KeyboardView.OnKeyboardListener {
     var gameController: GameController = GameController(this)
 
     val dataUpdateReceiver: DataUpdateReceiver = DataUpdateReceiver()
+
+    var progress: ProgressDialog? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -87,6 +90,18 @@ class GameActivity : AppCompatActivity(), KeyboardView.OnKeyboardListener {
                 gameController.synced()
             }
         }
+    }
 
+    fun showProgress(messageId: Int) {
+        if (progress == null) {
+            progress = ProgressDialog.show(this, null, getString(messageId))
+        }
+    }
+
+    fun hideProgress() {
+        if (progress != null) {
+            (progress as ProgressDialog).dismiss()
+            progress = null
+        }
     }
 }

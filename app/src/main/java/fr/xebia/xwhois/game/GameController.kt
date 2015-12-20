@@ -8,6 +8,7 @@ import io.realm.Realm
 
 class GameController(var view: GameActivity) {
 
+    val handler = Handler()
     var persons: List<Person> = listOf()
     var demoPersons: List<DemoPerson> = listOf()
     var personUuid: String = ""
@@ -30,7 +31,7 @@ class GameController(var view: GameActivity) {
                 if (remaining === 0) {
                     pause = true
                     view.message(R.string.message_loose)
-                    Handler().postDelayed({ next() }, 1500)
+                    handler.postDelayed({ next() }, 1500)
                 }
             }
         }
@@ -70,7 +71,8 @@ class GameController(var view: GameActivity) {
         if (persons.isEmpty()) {
             type = 0
             if (position >= demoPersons.size) {
-                view.endGame()
+                view.showProgress(R.string.dialog_downloading)
+                handler.postDelayed({ next() }, 1000)
             } else {
                 pause = false
                 val demoPerson = demoPersons[position]
@@ -78,6 +80,7 @@ class GameController(var view: GameActivity) {
                 view.bind(demoPerson)
             }
         } else {
+            view.hideProgress()
             type = 1
             if (position >= persons.size) {
                 view.endGame()
@@ -96,7 +99,7 @@ class GameController(var view: GameActivity) {
             pause = true
             setFound()
             view.message(R.string.message_win);
-            Handler().postDelayed({ next() }, 1500)
+            handler.postDelayed({ next() }, 1500)
         }
     }
 
@@ -126,9 +129,12 @@ class GameController(var view: GameActivity) {
     }
 
     fun synced() {
-        persons = realm.where(Person::class.java)
-                .equalTo("found", false)
-                .findAll()
+        if (type == 0) {
+            position = -1
+            persons = realm.where(Person::class.java)
+                    .equalTo("found", false)
+                    .findAll()
+        }
     }
 
 }
