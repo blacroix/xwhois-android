@@ -80,6 +80,9 @@ class GameController(var view: GameActivity) {
                 view.bind(demoPerson)
             }
         } else {
+            if (type == 0) {
+                position = 0
+            }
             view.hideProgress()
             type = 1
             if (position >= persons.size) {
@@ -130,7 +133,6 @@ class GameController(var view: GameActivity) {
 
     fun synced() {
         if (type == 0) {
-            position = -1
             persons = realm.where(Person::class.java)
                     .equalTo("found", false)
                     .findAll()
