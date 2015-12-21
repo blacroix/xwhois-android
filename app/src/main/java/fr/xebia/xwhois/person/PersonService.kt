@@ -24,7 +24,6 @@ class PersonService : IntentService(PersonService::class.java.simpleName) {
 
                 val realm = Realm.getInstance(this@PersonService)
                 realm.beginTransaction()
-                realm.clear(Person::class.java)
                 for (i in 0..jsonPersons.length() - 1) {
                     val p = Person()
                     val jsonPerson = jsonPersons.getJSONObject(i)
