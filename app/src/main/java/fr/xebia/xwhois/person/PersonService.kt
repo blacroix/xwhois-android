@@ -6,15 +6,16 @@ import com.bumptech.glide.Glide
 import com.squareup.okhttp.OkHttpClient
 import com.squareup.okhttp.Request
 import fr.xebia.xwhois.BuildConfig
+import fr.xebia.xwhois.tool.AsciiTool
 import io.realm.Realm
 import org.json.JSONArray
-import org.json.JSONObject
 import timber.log.Timber
 import java.io.IOException
 
 class PersonService : IntentService(PersonService::class.java.simpleName) {
 
     override fun onHandleIntent(intent: Intent) {
+        val asciiTool = AsciiTool()
         val client = OkHttpClient()
         client.run {
             val request = Request.Builder().url("${BuildConfig.URL}/api/all").build()
@@ -31,7 +32,7 @@ class PersonService : IntentService(PersonService::class.java.simpleName) {
                     if (p == null) {
                         p = Person()
                     }
-                    p.name = jsonPerson.getString("name").toLowerCase()
+                    p.name = asciiTool.normalize(jsonPerson.getString("name").toLowerCase())
                     p.image = jsonPerson.getString("image")
                     p.uuid = uuid
                     realm.copyToRealmOrUpdate(p)

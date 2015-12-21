@@ -77,6 +77,11 @@ dependencies {
             'io.reactivex:rxandroid:1.1.0'
     )
 
+    testCompile(
+            'junit:junit:4.12',
+            'org.assertj:assertj-core:1.7.1'
+    )
+
     compile('com.crashlytics.sdk.android:crashlytics:2.5.5@aar') {
         transitive = true
     }
