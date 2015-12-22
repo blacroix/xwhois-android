@@ -69,6 +69,9 @@ class GameController(var view: GameActivity) {
         view.setRemaining(remaining)
 
         if (persons.isEmpty()) {
+            if (type == 1) {
+                view.endGame()
+            }
             type = 0
             if (position >= demoPersons.size) {
                 view.showProgress(R.string.dialog_downloading)
@@ -86,15 +89,22 @@ class GameController(var view: GameActivity) {
             view.hideProgress()
             type = 1
             if (position >= persons.size) {
-                view.endGame()
+                reload()
+                next()
             } else {
                 pause = false
                 val person = persons[position]
                 personUuid = person.uuid
                 view.bind(person)
-
             }
         }
+    }
+
+    private fun reload() {
+        position = -1
+        persons = realm.where(Person::class.java)
+                .equalTo("found", false)
+                .findAll()
     }
 
     fun win(win: Boolean) {

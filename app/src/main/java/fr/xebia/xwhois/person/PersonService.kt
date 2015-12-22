@@ -14,8 +14,14 @@ import java.io.IOException
 
 class PersonService : IntentService(PersonService::class.java.simpleName) {
 
+    val keyFound = "found"
+    val keyUuid = "uuid"
+    val keyName = "name"
+    val keyImage = "image"
+
+    val asciiTool = AsciiTool()
+
     override fun onHandleIntent(intent: Intent) {
-        val asciiTool = AsciiTool()
         val client = OkHttpClient()
         client.run {
             val request = Request.Builder().url("${BuildConfig.URL}/api/all").build()
@@ -23,36 +29,50 @@ class PersonService : IntentService(PersonService::class.java.simpleName) {
                 val response = client.newCall(request).execute()
                 val jsonPersons = JSONArray(response.body().string())
                 val realm = Realm.getInstance(this@PersonService)
-                realm.beginTransaction()
-                for (i in 0..jsonPersons.length() - 1) {
-                    var p: Person?
-                    val jsonPerson = jsonPersons.getJSONObject(i)
-                    val uuid = jsonPerson.getString("uuid")
-                    p = realm.where(Person::class.java).equalTo("uuid", uuid).findFirst()
-                    if (p == null) {
-                        p = Person()
-                    }
-                    p.name = asciiTool.normalize(jsonPerson.getString("name").toLowerCase())
-                    p.image = jsonPerson.getString("image")
-                    p.uuid = uuid
-                    realm.copyToRealmOrUpdate(p)
-                    try {
-                        Glide.with(this@PersonService)
-                                .load(p.image)
-                                .downloadOnly(-1, -1)
-                                .get()
-                    } catch (e: IOException) {
-                        Timber.e(e, "Cannot download image ${p.name} ${p.image}")
-                    }
-                    Timber.i("Person cached ${i + 1}/${jsonPersons.length()}")
-                }
-                realm.commitTransaction()
+                savePersons(jsonPersons, realm)
+                cacheImages(realm)
             } catch (e: Exception) {
                 Timber.e(e, "Cannot get persons")
             }
         }
         Timber.i("Persons synchronisation ended")
-        sendBroadcast(Intent("REFRESH_DATA_INTENT"))
+    }
+
+    private fun cacheImages(realm: Realm) {
+        val persons = realm.where(Person::class.java).equalTo(keyFound, false).findAll()
+        for (i in 0..persons.size - 1) {
+            val p = persons[i]
+            try {
+                Glide.with(this@PersonService)
+                        .load(p.image)
+                        .downloadOnly(-1, -1)
+                        .get()
+            } catch (e: IOException) {
+                Timber.e(e, "Cannot download image ${p.name} ${p.image}")
+            }
+            if (i == 10) {
+                sendBroadcast(Intent("REFRESH_DATA_INTENT"))
+            }
+        }
+    }
+
+    private fun savePersons(jsonPersons: JSONArray, realm: Realm) {
+        realm.executeTransaction {
+            for (i in 0..jsonPersons.length() - 1) {
+                var p: Person?
+                val jsonPerson = jsonPersons.getJSONObject(i)
+                val uuid = jsonPerson.getString(keyUuid)
+                p = realm.where(Person::class.java).equalTo(keyUuid, uuid).findFirst()
+                if (p == null) {
+                    p = Person()
+                }
+                p.name = asciiTool.normalize(jsonPerson.getString(keyName).toLowerCase())
+                p.image = jsonPerson.getString(keyImage)
+                p.uuid = uuid
+                realm.copyToRealmOrUpdate(p)
+                Timber.i("Person cached ${i + 1}/${jsonPersons.length()}")
+            }
+        }
     }
 
 }

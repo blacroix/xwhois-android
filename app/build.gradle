@@ -49,8 +49,13 @@ android {
         }
         release {
             buildConfigField 'String', 'URL', '"http://xwhois.herokuapp.com"'
+
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            ext.betaDistributionGroupAliases = "early-adopters"
+            ext.betaDistributionReleaseNotesFilePath = "changelog.txt"
+
             signingConfig signingConfigs.release
         }
     }
@@ -86,5 +91,4 @@ dependencies {
         transitive = true
     }
 }
-
 
