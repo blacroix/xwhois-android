@@ -66,7 +66,7 @@ class GameController(var view: GameActivity) {
     fun next() {
         position++
         remaining = allowedTry
-        view.setRemaining(remaining)
+        view.reset(remaining)
 
         if (persons.isEmpty()) {
             if (type == 1) {

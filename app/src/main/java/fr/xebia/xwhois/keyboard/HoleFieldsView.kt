@@ -12,8 +12,6 @@ class HoleFieldsView @JvmOverloads constructor(context: Context, attrs: Attribut
 
     lateinit var group: LinearLayout
 
-    val random: Random = Random()
-
     override fun onFinishInflate() {
         super.onFinishInflate()
 
@@ -41,9 +39,6 @@ class HoleFieldsView @JvmOverloads constructor(context: Context, attrs: Attribut
             }
             group.addView(textView)
         }
-
-        show(name[random.nextInt(name.length)])
-        show(name[random.nextInt(name.length)])
     }
 
     fun show(c: Char): Boolean {

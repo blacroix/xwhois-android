@@ -9,6 +9,7 @@
     android:padding="10dp">
 
     <LinearLayout
+        android:id="@+id/firstLineLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -66,6 +67,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/secondLineLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -123,6 +125,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/thirdLineLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">

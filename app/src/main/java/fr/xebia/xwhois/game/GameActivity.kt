@@ -63,8 +63,14 @@ class GameActivity : AppCompatActivity(), KeyboardView.OnKeyboardListener {
         counterText.text = remaining.toString()
     }
 
+    fun reset(remaining: Int) {
+        setRemaining(remaining)
+        keyboardLayout.reset()
+    }
+
     fun bind(person: Person) {
         holeFieldsLayout.bind(person.name)
+        keyboardLayout.bind(person.name)
         Glide.with(this)
                 .load(person.image)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
@@ -73,6 +79,7 @@ class GameActivity : AppCompatActivity(), KeyboardView.OnKeyboardListener {
 
     fun bind(person: DemoPerson) {
         holeFieldsLayout.bind(person.name)
+        keyboardLayout.bind(person.name)
         personImage.setImageResource(person.image)
     }
 
