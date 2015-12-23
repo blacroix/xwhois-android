@@ -21,7 +21,12 @@
             </intent-filter>
         </activity>
 
-        <service android:name=".person.PersonService"/>
+        <activity
+            android:name=".info.InfoActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
+        <service
+            android:name=".person.PersonService"/>
     </application>
 
 </manifest>

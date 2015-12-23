@@ -1,2 +1,3 @@
 Optimise image caching
 Color letter and click once
+Info page

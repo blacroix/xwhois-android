@@ -26,10 +26,20 @@
             android:id="@+id/counterText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|right"
+            android:layout_gravity="bottom|end"
+            android:layout_marginEnd="10dp"
             android:layout_marginRight="10dp"
             android:textSize="32sp"
             tools:text="4"/>
+
+        <ImageButton
+            android:id="@+id/infoButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_margin="10dp"
+            android:src="@drawable/ic_rowing_black_24dp"
+            android:contentDescription="@string/content_description_info_button"/>
     </FrameLayout>
 
     <include layout="@layout/view_hole_fields"/>

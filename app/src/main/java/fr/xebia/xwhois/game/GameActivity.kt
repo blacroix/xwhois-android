@@ -12,6 +12,7 @@ import fr.xebia.xwhois.keyboard.KeyboardView
 import fr.xebia.xwhois.person.DemoPerson
 import fr.xebia.xwhois.person.Person
 import fr.xebia.xwhois.person.PersonService
+import fr.xebia.xwhois.info.InfoActivity
 import io.realm.Realm
 import kotlinx.android.synthetic.main.activity_game.*
 import kotlinx.android.synthetic.main.view_hole_fields.*
@@ -35,6 +36,8 @@ class GameActivity : AppCompatActivity(), KeyboardView.OnKeyboardListener {
         startService(Intent(this, PersonService::class.java))
 
         gameController.start(Realm.getInstance(this))
+
+        infoButton.setOnClickListener { startActivity(Intent(this, InfoActivity::class.java)) }
     }
 
     override fun onResume() {
