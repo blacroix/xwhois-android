@@ -12,7 +12,6 @@ import fr.xebia.xwhois.keyboard.KeyboardView
 import fr.xebia.xwhois.person.DemoPerson
 import fr.xebia.xwhois.person.Person
 import fr.xebia.xwhois.person.PersonService
-import fr.xebia.xwhois.info.InfoActivity
 import io.realm.Realm
 import kotlinx.android.synthetic.main.activity_game.*
 import kotlinx.android.synthetic.main.view_hole_fields.*
@@ -37,7 +36,6 @@ class GameActivity : AppCompatActivity(), KeyboardView.OnKeyboardListener {
 
         gameController.start(Realm.getInstance(this))
 
-        infoButton.setOnClickListener { startActivity(Intent(this, InfoActivity::class.java)) }
     }
 
     override fun onResume() {
@@ -74,6 +72,7 @@ class GameActivity : AppCompatActivity(), KeyboardView.OnKeyboardListener {
     fun bind(person: Person) {
         holeFieldsLayout.bind(person.name)
         keyboardLayout.bind(person.name)
+
         Glide.with(this)
                 .load(person.image)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)

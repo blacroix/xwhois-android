@@ -23,6 +23,10 @@
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_weight">1</item>
         <item name="android:gravity">center</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/dark_grey_5f</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:layout_margin">0dp</item>
     </style>
 
     <style name="holeField">

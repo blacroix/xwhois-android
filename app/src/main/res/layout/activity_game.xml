@@ -1,49 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    android:orientation="vertical"
-    tools:context=".game.GameActivity">
+    android:background="@drawable/bg_grain">
 
-    <FrameLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_gravity="center"
-        android:layout_weight="1">
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical"
+        tools:context=".game.GameActivity">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/personImage"
+                android:layout_width="250dp"
+                android:layout_height="300dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginTop="10dp"
+                android:alpha=".6"
+                android:rotation="5"
+                android:background="@drawable/box_shadow"
+                android:contentDescription="@string/content_description_person_image"
+                android:padding="5dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/llegardeur"/>
+        </FrameLayout>
+
+        <include layout="@layout/view_hole_fields"/>
+
+        <include layout="@layout/view_keyboard"/>
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:scaleType="fitStart"
+        android:src="@drawable/blood"/>
+
+    <TextView
+        android:id="@+id/counterText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|right"
+        android:layout_marginTop="10dp"
+        android:background="@color/grey_5f"
+        android:paddingBottom="3dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingTop="3dp"
+        android:textColor="@color/white_light"
+        android:textSize="15sp"
+        tools:text="10 000 PTS"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="horizontal">
 
         <ImageView
-            android:id="@+id/personImage"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:contentDescription="@string/content_description_person_image"
-            android:scaleType="fitCenter"
-            android:src="@drawable/llegardeur"/>
-
-        <TextView
-            android:id="@+id/counterText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_marginEnd="10dp"
-            android:layout_marginRight="10dp"
-            android:textSize="32sp"
-            tools:text="4"/>
+            android:src="@drawable/bullet"/>
 
-        <ImageButton
-            android:id="@+id/infoButton"
+        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_margin="10dp"
-            android:src="@drawable/ic_rowing_black_24dp"
-            android:contentDescription="@string/content_description_info_button"/>
-    </FrameLayout>
+            android:layout_marginLeft="5dp"
+            android:src="@drawable/bullet"/>
 
-    <include layout="@layout/view_hole_fields"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:src="@drawable/bullet"/>
 
-    <include layout="@layout/view_keyboard"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:src="@drawable/bullet"/>
 
-</LinearLayout>
+    </LinearLayout>
+
+</FrameLayout>

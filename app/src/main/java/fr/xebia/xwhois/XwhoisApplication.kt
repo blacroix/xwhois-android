@@ -18,4 +18,5 @@ class XwhoisApplication : Application() {
             Fabric.with(this, Crashlytics())
         }
     }
+
 }

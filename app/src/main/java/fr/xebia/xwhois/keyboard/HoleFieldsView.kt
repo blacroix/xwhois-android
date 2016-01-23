@@ -24,11 +24,7 @@ class HoleFieldsView @JvmOverloads constructor(context: Context, attrs: Attribut
     fun bind(name: String) {
         group.removeAllViews()
         for (i in 0..name.length - 1) {
-            var textView = TextView(context)
-            val textLayoutParams = LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
-            textLayoutParams.leftMargin = 10
-            textLayoutParams.rightMargin = 10
-            textView.layoutParams = textLayoutParams
+            var textView = KeyHole(context)
             val c = name[i]
             if (c === ' ') {
                 textView.text = " "

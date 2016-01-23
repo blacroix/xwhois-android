@@ -56,7 +56,7 @@ class KeyboardView @JvmOverloads constructor(context: Context, attrs: AttributeS
             if (defaultColor == null) {
                 defaultColor = textView.textColors
             }
-            textView.setTextColor(Color.MAGENTA)
+            textView.setTextColor(resources.getColor(R.color.grey_5f))
             textView.isSelected = true
             listener.keyboardCharSelected(textView.text[0])
         }
