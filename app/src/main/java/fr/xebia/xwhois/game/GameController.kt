@@ -30,6 +30,7 @@ class GameController(var view: GameActivity) {
             } else {
                 remaining--
                 view.looseLifeProgress(lifeArray[remaining])
+                view.looseBullet(remaining)
                 if (remaining === 0) {
                     pause = true
                     view.message(R.string.message_loose)

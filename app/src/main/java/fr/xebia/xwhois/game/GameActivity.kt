@@ -6,6 +6,8 @@ import android.content.*
 import android.os.Bundle
 import android.os.Handler
 import android.support.v7.app.AppCompatActivity
+import android.view.View
+import android.widget.ImageView
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
@@ -27,10 +29,14 @@ class GameActivity : AppCompatActivity(), KeyboardView.OnKeyboardListener {
 
     var progress: ProgressDialog? = null
 
+    lateinit var bulletArray: Array<ImageView>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_game)
+
+        bulletArray = arrayOf(bulletZeroView, bulletOneView, bulletTwoView, bulletThreeView)
 
         keyboardLayout.listener = this
 
@@ -61,6 +67,10 @@ class GameActivity : AppCompatActivity(), KeyboardView.OnKeyboardListener {
         gameController.win(win)
     }
 
+    fun looseBullet(position: Int) {
+        bulletArray[position].visibility = View.GONE
+    }
+
     fun looseLifeProgress(errorDistance: Int) {
         val ed = pxFromDp(errorDistance)
         val va = ValueAnimator.ofInt(lifeImageView.layoutParams.width, ed)
@@ -76,6 +86,8 @@ class GameActivity : AppCompatActivity(), KeyboardView.OnKeyboardListener {
     fun reset(errorDistance: Int) {
         looseLifeProgress(errorDistance)
         keyboardLayout.reset()
+        for (imageView in bulletArray)
+            imageView.visibility = View.VISIBLE
     }
 
     fun bind(person: Person) {
