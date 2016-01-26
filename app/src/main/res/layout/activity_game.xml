@@ -21,18 +21,13 @@
             <ImageView
                 android:id="@+id/personImage"
                 android:layout_width="250dp"
-                android:layout_height="300dp"
+                android:layout_height="325dp"
                 android:layout_gravity="center"
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="40dp"
-                android:layout_marginRight="40dp"
-                android:layout_marginTop="10dp"
-                android:alpha=".6"
-                android:rotation="5"
+                android:alpha=".7"
                 android:background="@drawable/box_shadow"
                 android:contentDescription="@string/content_description_person_image"
                 android:padding="5dp"
-                android:scaleType="centerCrop"
+                android:scaleType="fitXY"
                 android:src="@drawable/llegardeur"/>
         </FrameLayout>
 
@@ -43,8 +38,10 @@
     </LinearLayout>
 
     <ImageView
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
+        android:id="@+id/lifeImageView"
+        android:layout_width="400dp"
+        android:layout_height="match_parent"
+        android:contentDescription="@null"
         android:scaleType="fitStart"
         android:src="@drawable/blood"/>
 

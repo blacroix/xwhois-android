@@ -1,8 +1,10 @@
 package fr.xebia.xwhois.game
 
+import android.animation.ValueAnimator
 import android.app.ProgressDialog
 import android.content.*
 import android.os.Bundle
+import android.os.Handler
 import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
 import com.bumptech.glide.Glide
@@ -35,7 +37,6 @@ class GameActivity : AppCompatActivity(), KeyboardView.OnKeyboardListener {
         startService(Intent(this, PersonService::class.java))
 
         gameController.start(Realm.getInstance(this))
-
     }
 
     override fun onResume() {
@@ -60,12 +61,20 @@ class GameActivity : AppCompatActivity(), KeyboardView.OnKeyboardListener {
         gameController.win(win)
     }
 
-    fun setRemaining(remaining: Int) {
-        counterText.text = remaining.toString()
+    fun looseLifeProgress(errorDistance: Int) {
+        val ed = pxFromDp(errorDistance)
+        val va = ValueAnimator.ofInt(lifeImageView.layoutParams.width, ed)
+        va.addUpdateListener {
+            val v: Int = it.animatedValue as Int
+            lifeImageView.layoutParams.width = v
+            lifeImageView.requestLayout()
+        }
+        va.setDuration(200)
+        va.start()
     }
 
-    fun reset(remaining: Int) {
-        setRemaining(remaining)
+    fun reset(errorDistance: Int) {
+        looseLifeProgress(errorDistance)
         keyboardLayout.reset()
     }
 
@@ -112,5 +121,9 @@ class GameActivity : AppCompatActivity(), KeyboardView.OnKeyboardListener {
             (progress as ProgressDialog).dismiss()
             progress = null
         }
+    }
+
+    fun pxFromDp(dp: Int): Int {
+        return (dp * this@GameActivity.resources.displayMetrics.density).toInt()
     }
 }

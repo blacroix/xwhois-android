@@ -18,6 +18,8 @@ class GameController(var view: GameActivity) {
     var pause = false
     var type = 0
 
+    val lifeArray: IntArray = intArrayOf(400, 300, 200, 100)
+
     lateinit var realm: Realm
 
     fun checkChar(c: Char) {
@@ -27,7 +29,7 @@ class GameController(var view: GameActivity) {
                 view.correctChar(c)
             } else {
                 remaining--
-                view.setRemaining(remaining)
+                view.looseLifeProgress(lifeArray[remaining])
                 if (remaining === 0) {
                     pause = true
                     view.message(R.string.message_loose)
@@ -66,7 +68,7 @@ class GameController(var view: GameActivity) {
     fun next() {
         position++
         remaining = allowedTry
-        view.reset(remaining)
+        view.reset(0)
 
         if (persons.isEmpty()) {
             if (type == 1) {
