@@ -23,7 +23,7 @@ import kotlinx.android.synthetic.main.view_keyboard.*
 
 class GameActivity : AppCompatActivity(), KeyboardView.OnKeyboardListener {
 
-    var gameController: GameController = GameController(this)
+    lateinit var gameController: GameController
 
     val dataUpdateReceiver: DataUpdateReceiver = DataUpdateReceiver()
 
@@ -42,6 +42,7 @@ class GameActivity : AppCompatActivity(), KeyboardView.OnKeyboardListener {
 
         startService(Intent(this, PersonService::class.java))
 
+        gameController = GameController(this)
         gameController.start(Realm.getInstance(this))
     }
 
@@ -137,5 +138,9 @@ class GameActivity : AppCompatActivity(), KeyboardView.OnKeyboardListener {
 
     fun pxFromDp(dp: Int): Int {
         return (dp * this@GameActivity.resources.displayMetrics.density).toInt()
+    }
+
+    fun setScore(score: Int) {
+        counterText.text = getString(R.string.text_score, score)
     }
 }

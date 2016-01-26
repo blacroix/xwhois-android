@@ -4,9 +4,10 @@ import android.os.Handler
 import fr.xebia.xwhois.R
 import fr.xebia.xwhois.person.DemoPerson
 import fr.xebia.xwhois.person.Person
+import fr.xebia.xwhois.tool.SharePreferenceTool
 import io.realm.Realm
 
-class GameController(var view: GameActivity) {
+class GameController {
 
     val handler = Handler()
     var persons: List<Person> = listOf()
@@ -17,10 +18,17 @@ class GameController(var view: GameActivity) {
     var remaining = allowedTry
     var pause = false
     var type = 0
+    var view: GameActivity
+    var sharePreferenceTool: SharePreferenceTool
 
     val lifeArray: IntArray = intArrayOf(400, 300, 200, 100)
 
     lateinit var realm: Realm
+
+    constructor(view: GameActivity) {
+        this.view = view
+        this.sharePreferenceTool = SharePreferenceTool(view)
+    }
 
     fun checkChar(c: Char) {
         if (!pause) {
@@ -35,9 +43,25 @@ class GameController(var view: GameActivity) {
                     pause = true
                     view.message(R.string.message_loose)
                     handler.postDelayed({ next() }, 1500)
+                    onLoose()
+                } else {
+                    onMistake();
                 }
             }
+            view.setScore(sharePreferenceTool.getScore())
         }
+    }
+
+    private fun onMistake() {
+        sharePreferenceTool.updateScore(-5)
+    }
+
+    private fun onLoose() {
+        sharePreferenceTool.updateScore(-20)
+    }
+
+    fun onWin() {
+        sharePreferenceTool.updateScore(10)
     }
 
     private fun setFound() {
@@ -116,6 +140,7 @@ class GameController(var view: GameActivity) {
             setFound()
             view.message(R.string.message_win);
             handler.postDelayed({ next() }, 1500)
+            onWin()
         }
     }
 

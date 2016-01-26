@@ -22,11 +22,6 @@
             </intent-filter>
         </activity>
 
-        <activity
-            android:name=".info.InfoActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"/>
-
         <service
             android:name=".person.PersonService"/>
     </application>
