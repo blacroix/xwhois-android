@@ -1,3 +1,2 @@
-Optimise image caching
-Color letter and click once
-Info page
+Status bar transparent
+Google xebia.fr sign in required to use app

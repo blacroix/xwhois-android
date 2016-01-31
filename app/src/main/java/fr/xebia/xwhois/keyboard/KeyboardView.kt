@@ -2,13 +2,11 @@ package fr.xebia.xwhois.keyboard
 
 import android.content.Context
 import android.content.res.ColorStateList
-import android.graphics.Color
+import android.support.v4.content.ContextCompat
 import android.util.AttributeSet
 import android.widget.LinearLayout
 import android.widget.TextView
 import fr.xebia.xwhois.R
-import fr.xebia.xwhois.game.GameActivity
-import fr.xebia.xwhois.person.Person
 import kotlinx.android.synthetic.main.view_keyboard.view.*
 import java.util.*
 
@@ -56,7 +54,7 @@ class KeyboardView @JvmOverloads constructor(context: Context, attrs: AttributeS
             if (defaultColor == null) {
                 defaultColor = textView.textColors
             }
-            textView.setTextColor(resources.getColor(R.color.grey_5f))
+            textView.setTextColor(ContextCompat.getColor(context, R.color.grey_5f))
             textView.isSelected = true
             listener.keyboardCharSelected(textView.text[0])
         }

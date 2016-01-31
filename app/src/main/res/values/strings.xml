@@ -1,10 +1,18 @@
 <resources>
     <string name="app_name">xwhois</string>
+
     <string name="action_settings">Settings</string>
+
     <string name="content_description_person_image">Person\'s image</string>
+
     <string name="message_win">Well done!</string>
     <string name="message_loose">Try again</string>
     <string name="message_end">No more Xebians for now</string>
+    <string name="message_sign_in_error">Cannot login, please use only your @xebia.fr address to sign in</string>
+
     <string name="dialog_downloading">Downloading more persons…</string>
+
     <string name="text_score">%1$s pts</string>
+    <string name="text_login">Please, login with your @xebia.fr address</string>
+    <string name="text_welcome">Welcome on Xwhois!</string>
 </resources>

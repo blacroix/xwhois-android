@@ -1,0 +1,28 @@
+{
+  "project_info": {
+    "project_id": "xwhois-42c55",
+    "project_number": "577930710970",
+    "name": "Xwhois"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:577930710970:android:4e451319e3d38467",
+        "client_id": "577930710970-g37u26fv0ckbgeb4l004qjd8bqngfd4l.apps.googleusercontent.com",
+        "client_type": 1,
+        "android_client_info": {
+          "package_name": "fr.xebia.xwhois.debug"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [],
+      "services": {
+        "google_signin_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "client_info": [],
+  "ARTIFACT_VERSION": "1"
+}

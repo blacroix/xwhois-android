@@ -2,9 +2,11 @@ package fr.xebia.xwhois.game
 
 import android.animation.ValueAnimator
 import android.app.ProgressDialog
-import android.content.*
+import android.content.BroadcastReceiver
+import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
 import android.os.Bundle
-import android.os.Handler
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.ImageView
@@ -16,6 +18,8 @@ import fr.xebia.xwhois.keyboard.KeyboardView
 import fr.xebia.xwhois.person.DemoPerson
 import fr.xebia.xwhois.person.Person
 import fr.xebia.xwhois.person.PersonService
+import fr.xebia.xwhois.sign_in.SignInActivity
+import fr.xebia.xwhois.tool.SharePreferenceTool
 import io.realm.Realm
 import kotlinx.android.synthetic.main.activity_game.*
 import kotlinx.android.synthetic.main.view_hole_fields.*
@@ -24,6 +28,8 @@ import kotlinx.android.synthetic.main.view_keyboard.*
 class GameActivity : AppCompatActivity(), KeyboardView.OnKeyboardListener {
 
     lateinit var gameController: GameController
+
+    lateinit var preferenceTool: SharePreferenceTool
 
     val dataUpdateReceiver: DataUpdateReceiver = DataUpdateReceiver()
 
@@ -35,6 +41,12 @@ class GameActivity : AppCompatActivity(), KeyboardView.OnKeyboardListener {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_game)
+
+        preferenceTool = SharePreferenceTool(this)
+
+        if (!preferenceTool.isSignIn()) {
+            startActivity(Intent(this, SignInActivity::class.java))
+        }
 
         bulletArray = arrayOf(bulletZeroView, bulletOneView, bulletTwoView, bulletThreeView)
 
