@@ -54,7 +54,7 @@ class SignInActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedLi
     }
 
     override fun onBackPressed() {
-        // Back press disabled sign in required
+        finishAffinity()
     }
 
     private fun handleSignInResult(result: GoogleSignInResult) {
